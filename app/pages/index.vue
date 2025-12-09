@@ -12,14 +12,9 @@ const { isNotificationsSlideoverOpen } = useDashboard();
 const items = [
   [
     {
-      label: "New Student",
-      icon: "i-lucide-user-plus",
-      to: "/students",
-    },
-    {
-      label: "New Attendance",
-      icon: "i-lucide-clock",
-      to: "/attendances",
+      label: "New Product",
+      icon: "i-lucide-package-plus",
+      to: "/products",
     },
   ],
 ] satisfies DropdownMenuItem[][];
@@ -61,9 +56,7 @@ const period = ref<Period>("daily");
     </template>
 
     <template #body>
-      <HomeStats />
-      <HomeAttendanceStats />
-      <HomeSales />
+      <LazyHomeProductStats />
     </template>
   </UDashboardPanel>
 </template>

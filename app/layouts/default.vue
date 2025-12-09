@@ -17,17 +17,17 @@ const links = [
       },
     },
     {
-      label: "Student",
-      icon: "i-lucide-circle-user",
-      to: "/students",
+      label: "Products",
+      icon: "i-lucide-package",
+      to: "/products",
       onSelect: () => {
         open.value = false;
       },
     },
     {
-      label: "Attendance",
-      to: "/attendances/new",
-      icon: "i-lucide-clock",
+      label: "Settings",
+      icon: "i-lucide-settings",
+      to: "/settings",
       onSelect: () => {
         open.value = false;
       },
@@ -76,7 +76,7 @@ onMounted(async () => {
       :ui="{ footer: 'lg:border-t lg:border-default' }"
     >
       <template #header="{ collapsed }">
-        <h1>School</h1>
+        <h1>Dashboard</h1>
       </template>
 
       <template #default="{ collapsed }">
@@ -86,14 +86,6 @@ onMounted(async () => {
           orientation="vertical"
           tooltip
           popover
-        />
-
-        <UNavigationMenu
-          :collapsed="collapsed"
-          :items="links[1]"
-          orientation="vertical"
-          tooltip
-          class="mt-auto"
         />
       </template>
 

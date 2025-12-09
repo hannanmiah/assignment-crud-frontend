@@ -78,6 +78,17 @@ export interface Notification {
 
 export type Period = 'daily' | 'weekly' | 'monthly'
 
+export interface Product {
+  id: number
+  name: string
+  description: string
+  price: number
+  stock: number
+  is_active: boolean
+  created_at: string
+  updated_at: string
+}
+
 export interface Range {
   start: Date
   end: Date
