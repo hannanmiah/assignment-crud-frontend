@@ -56,7 +56,7 @@ const period = ref<Period>("daily");
     </template>
 
     <template #body>
-      <LazyHomeProductStats />
+      <LazyProductStats />
     </template>
   </UDashboardPanel>
 </template>

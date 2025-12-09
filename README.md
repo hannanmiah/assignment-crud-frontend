@@ -1,15 +1,14 @@
-# Attendance Management System
+# Product Management System
 
-An intuitive and powerful attendance management system built with Nuxt.js and Nuxt UI.
+A full-stack CRUD application for product management built with Vue 3 (Nuxt.js) and Laravel backend.
 
 ## Features
 
-*   **Dashboard:** A comprehensive overview of attendance statistics.
-*   **Student Management:** Add, view, and manage students.
-*   **Customer Management:** Manage customer information.
-*   **Attendance Tracking:** Easily mark and track attendance.
-*   **Notifications:** In-app notifications for important events.
-*   **Settings:** Configure application settings, manage members, and set notification preferences.
+*   **Product CRUD:** Complete Create, Read, Update, Delete operations for products
+*   **Dashboard:** Real-time statistics including total products, stock value, stock alerts, and user count
+*   **Authentication:** User registration and login using Laravel Sanctum
+*   **Data Management:** Advanced data table with pagination, search, and filtering
+*   **Responsive UI:** Modern, mobile-friendly interface using Nuxt UI components
 
 ## Getting Started
 
@@ -26,7 +25,7 @@ Follow these instructions to get a copy of the project up and running on your lo
 
     ```bash
     git clone https://github.com/hannanmiah/attendance-management-frontend.git
-    cd attendance-management-frontend
+    cd assignment-frontend
     ```
 
 2.  Install the dependencies:
@@ -70,7 +69,12 @@ Follow these instructions to get a copy of the project up and running on your lo
 ## Project Structure
 
 *   `app/`: Contains the core application files, including pages, components, layouts, and composables.
-*   `server/`: Contains the server-side API endpoints.
+    *   `pages/`: Application pages (Home, Products, Settings, Login, Register)
+    *   `components/`: Reusable Vue components
+        *   `home/`: Dashboard components
+        *   `product/`: Product CRUD components
+    *   `layouts/`: Application layouts
+    *   `types/`: TypeScript type definitions
 *   `public/`: Contains the public assets of the application, such as the favicon.
 *   `nuxt.config.ts`: The main configuration file for the Nuxt.js application.
 
@@ -78,7 +82,7 @@ Follow these instructions to get a copy of the project up and running on your lo
 
 The following API endpoints are available:
 
-*  [API Docs](api-docs.md)
+*  [API Documentation](api-docs.md) - Complete list of all available endpoints including Products, Authentication, and Statistics
 
 ## Deployment
 

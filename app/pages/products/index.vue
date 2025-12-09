@@ -306,20 +306,19 @@ const reloadProducts = () => {
           />
         </div>
       </div>
+      <LazyProductEditModal
+        v-if="selectedProduct"
+        v-model="editModalOpen"
+        :product="selectedProduct"
+        @updated="reloadProducts"
+      />
+
+      <LazyProductDeleteModal
+        v-if="selectedProduct"
+        v-model="deleteModalOpen"
+        :product="selectedProduct"
+        @deleted="reloadProducts"
+      />
     </template>
-
-    <LazyProductEditModal
-      v-if="selectedProduct"
-      v-model="editModalOpen"
-      :product="selectedProduct"
-      @updated="reloadProducts"
-    />
-
-    <LazyProductDeleteModal
-      v-if="selectedProduct"
-      v-model="deleteModalOpen"
-      :product="selectedProduct"
-      @deleted="reloadProducts"
-    />
   </UDashboardPanel>
 </template>
