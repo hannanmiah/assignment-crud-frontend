@@ -46,7 +46,6 @@ Follow these instructions to get a copy of the project up and running on your lo
 
     ```env
     NUXT_PUBLIC_API_BASE=http://localhost:8000
-    GEMINI_API_KEY=your_gemini_api_key
     ```
 
 ### Running the Application
