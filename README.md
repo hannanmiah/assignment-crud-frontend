@@ -24,8 +24,8 @@ Follow these instructions to get a copy of the project up and running on your lo
 1.  Clone the repository:
 
     ```bash
-    git clone https://github.com/hannanmiah/attendance-management-frontend.git
-    cd assignment-frontend
+    git clone https://github.com/hannanmiah/assignment-crud-frontend.git
+    cd assignment-crud-frontend
     ```
 
 2.  Install the dependencies:
