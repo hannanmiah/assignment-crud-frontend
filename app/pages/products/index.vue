@@ -22,7 +22,11 @@ const editModalOpen = ref(false);
 
 const columnVisibility = ref();
 
-const { data: products, status, refresh } = await useLazySanctumFetch<{
+const {
+  data: products,
+  status,
+  refresh,
+} = await useLazySanctumFetch<{
   data: Product[];
   pagination: {
     current_page: number;
@@ -34,9 +38,15 @@ const { data: products, status, refresh } = await useLazySanctumFetch<{
   "/api/products",
   () => ({
     params: {
+      sort: "created_at:desc",
       page: page.value,
       search: search.value,
-      is_active: statusFilter.value === "" ? undefined : statusFilter.value === 'active' ? true : false,
+      is_active:
+        statusFilter.value === ""
+          ? undefined
+          : statusFilter.value === "active"
+          ? true
+          : false,
     },
   }),
   {
@@ -118,7 +128,12 @@ const columns: TableColumn<Product>[] = [
       return h("div", { class: "flex items-center gap-3" }, [
         h("div", undefined, [
           h("p", { class: "font-medium text-highlighted" }, row.original.name),
-          h("p", { class: "text-sm text-muted" }, row.original.description.substring(0, 50) + (row.original.description.length > 50 ? "..." : "")),
+          h(
+            "p",
+            { class: "text-sm text-muted" },
+            row.original.description.substring(0, 50) +
+              (row.original.description.length > 50 ? "..." : "")
+          ),
         ]),
       ]);
     },
@@ -185,6 +200,13 @@ const columns: TableColumn<Product>[] = [
     },
   },
 ];
+
+const reloadProducts = () => {
+  deleteModalOpen.value = false;
+  editModalOpen.value = false;
+  page.value = 1;
+  refresh();
+};
 </script>
 
 <template>
@@ -211,17 +233,9 @@ const columns: TableColumn<Product>[] = [
         />
 
         <div class="flex flex-wrap items-center gap-1.5">
-          <LazyProductDeleteModal
-            v-if="selectedProduct"
-            v-model="deleteModalOpen"
-            :product="selectedProduct"
-            @deleted="refresh"
-          />
-
           <USelect
             v-model="statusFilter"
             :items="[
-              { label: 'All', value: '' },
               { label: 'Active', value: 'active' },
               { label: 'Inactive', value: 'inactive' },
             ]"
@@ -298,7 +312,14 @@ const columns: TableColumn<Product>[] = [
       v-if="selectedProduct"
       v-model="editModalOpen"
       :product="selectedProduct"
-      @updated="refresh"
+      @updated="reloadProducts"
+    />
+
+    <LazyProductDeleteModal
+      v-if="selectedProduct"
+      v-model="deleteModalOpen"
+      :product="selectedProduct"
+      @deleted="reloadProducts"
     />
   </UDashboardPanel>
 </template>
