@@ -11,13 +11,14 @@ interface ProductStatistics {
 
 const client = useSanctumClient();
 
-const { data: stats } = await useAsyncData<ProductStatistics>(
+const { data: stats } = await useAsyncData<{data: ProductStatistics}>(
   "product-stats",
   () => {
     return client("/api/statistics/overview");
   },
   {
-    default: () => ({
+    default: () => ( {
+      data: {
       total_products: 0,
       active_products: 0,
       inactive_products: 0,
@@ -25,6 +26,7 @@ const { data: stats } = await useAsyncData<ProductStatistics>(
       total_stock_value: 0,
       out_of_stock_products: 0,
       low_stock_products: 0,
+      }
     }),
   }
 );
@@ -56,11 +58,11 @@ const formatCurrency = (value: number) => {
     >
       <div class="flex items-center gap-2">
         <span class="text-2xl font-semibold text-highlighted">
-          {{ stats.total_products }}
+          {{ stats.data.total_products }}
         </span>
       </div>
       <div class="text-sm text-muted">
-        {{ stats.active_products }} active, {{ stats.inactive_products }} inactive
+        {{ stats.data.active_products }} active, {{ stats.data.inactive_products }} inactive
       </div>
     </UPageCard>
 
@@ -79,7 +81,7 @@ const formatCurrency = (value: number) => {
     >
       <div class="flex items-center gap-2">
         <span class="text-2xl font-semibold text-highlighted">
-          {{ formatCurrency(stats.total_stock_value) }}
+          {{ formatCurrency(stats.data.total_stock_value) }}
         </span>
       </div>
     </UPageCard>
@@ -99,11 +101,11 @@ const formatCurrency = (value: number) => {
     >
       <div class="flex items-center gap-2">
         <span class="text-2xl font-semibold text-highlighted">
-          {{ stats.out_of_stock_products + stats.low_stock_products }}
+          {{ stats.data.out_of_stock_products + stats.data.low_stock_products }}
         </span>
       </div>
       <div class="text-sm text-muted">
-        {{ stats.out_of_stock_products }} out of stock, {{ stats.low_stock_products }} low stock
+        {{ stats.data.out_of_stock_products }} out of stock, {{ stats.data.low_stock_products }} low stock
       </div>
     </UPageCard>
 
@@ -122,7 +124,7 @@ const formatCurrency = (value: number) => {
     >
       <div class="flex items-center gap-2">
         <span class="text-2xl font-semibold text-highlighted">
-          {{ stats.total_users }}
+          {{ stats.data.total_users }}
         </span>
       </div>
     </UPageCard>
